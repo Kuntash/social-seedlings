@@ -1,0 +1,21 @@
+.profile__picture__container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: var(--main-gradient);
+}
+
+.profile__picture__container.small {
+  width: 50px;
+  height: 50px;
+}
+.profile__picture__container.medium {
+  width: 80px;
+  height: 80px;
+}
+
+.profile__picture__container.large {
+  width: 200px;
+  height: 200px;
+}

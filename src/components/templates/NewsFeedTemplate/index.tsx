@@ -1,0 +1,1 @@
+export { NewsFeedTemplate } from './NewsFeedTemplate';

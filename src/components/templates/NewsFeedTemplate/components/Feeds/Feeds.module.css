@@ -1,0 +1,10 @@
+.feed__container {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  flex-grow: 1;
+  padding: 20px 0;
+  max-width: 500px;
+  width: 100%;
+  row-gap: 20px;
+}

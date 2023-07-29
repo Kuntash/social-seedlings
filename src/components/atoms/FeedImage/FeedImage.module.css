@@ -1,0 +1,26 @@
+.feed__image__container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+.feed__image__container.small {
+  height: 300px;
+  width: 300px;
+}
+
+.feed__image__container.regular {
+  height: 468px;
+  width: 468px;
+}
+
+@media (max-width: 425px) {
+  .feed__image__container.small {
+    height: 400px;
+    width: 400px;
+  }
+  .feed__image__container.regular {
+    height: 400px;
+  }
+}
