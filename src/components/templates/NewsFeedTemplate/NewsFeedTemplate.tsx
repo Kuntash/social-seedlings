@@ -2,8 +2,12 @@ import Head from 'next/head';
 import React from 'react';
 import styles from '@main/components/templates/NewsFeedTemplate/NewsFeedTemplate.module.css';
 import { Feeds } from './components/Feeds';
+import { useInfiniteFeeds } from '@main/hooks/reactQuery/useInfiniteFeeds';
+import { Loader } from '@main/components/atoms/Loader';
 
 export const NewsFeedTemplate = () => {
+  const { isInitialLoading: areInitialFeedsLoading } = useInfiniteFeeds();
+
   return (
     <>
       <Head>
@@ -17,11 +21,17 @@ export const NewsFeedTemplate = () => {
       </Head>
 
       {/* Layout for  */}
-      <main className={styles.main}>
+      <main
+        className={styles.main}
+        style={{
+          justifyContent: areInitialFeedsLoading ? 'center' : 'flex-start'
+        }}
+      >
         {/* Random user profiles circles */}
 
         {/* List of random feeds */}
-        <Feeds />
+
+        {areInitialFeedsLoading ? <Loader size="large" /> : <Feeds />}
       </main>
     </>
   );

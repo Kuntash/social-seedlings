@@ -4,21 +4,19 @@ import { FeedImageProps } from './types';
 import Image from 'next/legacy/image';
 
 export const FeedImage = (props: FeedImageProps) => {
-  const { urls, size, color, blurHash } = props;
+  const { urls, size, color } = props;
 
   return (
     <div
       className={`${styles.feed__image__container} ${styles?.[size]}
       `}
-      style={{ filter: `drop-shadow(0px 0px 5px ${color})` }}
+      style={{ filter: `drop-shadow(0px 0px 10px ${color})` }}
     >
       <Image
         src={urls?.[size]}
         alt="Feed image"
         layout="fill"
         objectFit="cover"
-        placeholder="blur"
-        blurDataURL={blurHash}
       />
     </div>
   );

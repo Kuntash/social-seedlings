@@ -1,7 +1,7 @@
 .feed__item {
   width: 100%;
   background-color: var(--feed-background-color);
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid var(--feed-border-color);
   padding: 20px;
   display: flex;
@@ -26,6 +26,10 @@
   font-weight: bold;
   font-size: 16px;
   color: var(--bold-font-color);
+}
+
+.user__name:hover {
+  opacity: 0.7;
 }
 
 .user__location {

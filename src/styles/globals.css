@@ -6,9 +6,17 @@
   --main-gradient: linear-gradient(to left, #00c853, #b2ff59);
   --bold-font-color: #040303;
   --regular-font-color: #777;
+  --loader-background-color: #1d5d9b;
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+/* Disable default link styles */
+
+a {
+  text-decoration: inherit;
+  color: inherit;
 }
