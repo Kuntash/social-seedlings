@@ -5,6 +5,8 @@ export const useInfiniteFeeds = () => {
   return useInfiniteQuery({
     queryKey: ['feeds'],
     queryFn: () => getFeeds(),
-    getNextPageParam: () => true
+    getNextPageParam: () => true,
+    retry: false,
+    retryOnMount: false
   });
 };

@@ -56,7 +56,7 @@ export const FeedItem = (props: FeedItemProps) => {
 
         <div className={styles.feed__image__overlay}>
           <p className={styles.feed__image__description}>
-            {feed?.alt_description}
+            {feed?.alt_description ?? 'No description added'}
           </p>
         </div>
       </div>

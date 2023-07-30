@@ -9,16 +9,21 @@ import { PhotosViewToggleState } from './types';
 import { PhotosViewToggle } from './components/PhotosViewToggle';
 import { FeedItem } from '../NewsFeedTemplate/components/FeedItem';
 import { GridPhotoItem } from './components/GridPhotoItem/GridPhotoItem';
+import { ErrorBanner } from '@main/components/atoms/ErrorBanner/ErrorBanner';
 
 export const UserDetailsTemplate = () => {
   const router = useRouter();
   const userName = router.query?.userName?.toString() as string;
-  const { data: userDetails, isInitialLoading: isInitialUserDetailsLoading } =
-    useUserDetails({ userName });
+  const {
+    data: userDetails,
+    isInitialLoading: isInitialUserDetailsLoading,
+    isError: isUserDetailsError
+  } = useUserDetails({ userName });
 
   const {
     data: userPhotos,
     isInitialLoading: areInitialUserPhotosLoading,
+    isError: areUserPhotosError,
     fetchNextPage,
     isFetchingNextPage
   } = useUserPhotos({ userName });
@@ -29,11 +34,19 @@ export const UserDetailsTemplate = () => {
     <main
       className={styles.user__details__page}
       style={{
-        justifyContent: isInitialUserDetailsLoading ? 'center' : 'flex-start'
+        justifyContent:
+          isInitialUserDetailsLoading ||
+          areInitialUserPhotosLoading ||
+          isUserDetailsError ||
+          areUserPhotosError
+            ? 'center'
+            : 'flex-start'
       }}
     >
       {isInitialUserDetailsLoading || areInitialUserPhotosLoading ? (
         <Loader size="large" />
+      ) : isUserDetailsError || areUserPhotosError ? (
+        <ErrorBanner />
       ) : (
         <div className={styles.user__details__container}>
           {/* Header */}

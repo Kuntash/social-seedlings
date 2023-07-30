@@ -4,9 +4,11 @@ import styles from '@main/components/templates/NewsFeedTemplate/NewsFeedTemplate
 import { Feeds } from './components/Feeds';
 import { useInfiniteFeeds } from '@main/hooks/reactQuery/useInfiniteFeeds';
 import { Loader } from '@main/components/atoms/Loader';
+import { ErrorBanner } from '@main/components/atoms/ErrorBanner/ErrorBanner';
 
 export const NewsFeedTemplate = () => {
-  const { isInitialLoading: areInitialFeedsLoading } = useInfiniteFeeds();
+  const { isInitialLoading: areInitialFeedsLoading, isError: isFeedError } =
+    useInfiniteFeeds();
 
   return (
     <>
@@ -24,14 +26,21 @@ export const NewsFeedTemplate = () => {
       <main
         className={styles.main}
         style={{
-          justifyContent: areInitialFeedsLoading ? 'center' : 'flex-start'
+          justifyContent:
+            areInitialFeedsLoading || isFeedError ? 'center' : 'flex-start'
         }}
       >
         {/* Random user profiles circles */}
 
         {/* List of random feeds */}
 
-        {areInitialFeedsLoading ? <Loader size="large" /> : <Feeds />}
+        {areInitialFeedsLoading ? (
+          <Loader size="large" />
+        ) : isFeedError ? (
+          <ErrorBanner />
+        ) : (
+          <Feeds />
+        )}
       </main>
     </>
   );

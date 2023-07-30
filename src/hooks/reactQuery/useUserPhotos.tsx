@@ -19,6 +19,7 @@ export const useUserPhotos = (props: UseUserPhotos) => {
       lastPage?.length === FEED_LIMIT_PER_PAGE
         ? allPages.length + 1
         : undefined,
-    enabled: !!userName
+    enabled: !!userName,
+    retry: false
   });
 };

@@ -6,6 +6,7 @@ export const useUserDetails = (props: { userName: string }) => {
   return useQuery({
     queryKey: ['userDetails', userName],
     queryFn: () => getUserDetails(userName),
-    enabled: !!userName
+    enabled: !!userName,
+    retry: false
   });
 };
