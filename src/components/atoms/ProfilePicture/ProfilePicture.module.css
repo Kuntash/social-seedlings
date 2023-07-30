@@ -2,8 +2,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 50%;
-  border: 2px solid transparent;
-  background: var(--main-gradient);
+  border: 3px solid var(--main-gradient);
+  flex-shrink: 0;
 }
 
 .profile__picture__container.small {
@@ -16,6 +16,13 @@
 }
 
 .profile__picture__container.large {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
+}
+
+@media (max-width: 425px) {
+  .profile__picture__container.large {
+    width: 100px;
+    height: 100px;
+  }
 }

@@ -1,0 +1,26 @@
+.photos__view__toggle__container {
+  background-color: var(--background-color);
+  border-radius: 30px;
+  width: max-content;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.toggle__button {
+  cursor: pointer;
+  padding: 5px 30px;
+  border: none;
+  background-color: transparent;
+  position: relative;
+}
+
+.toggle__button > svg {
+  display: inline-block;
+  width: 24px;
+}
+.active__overlay {
+  position: absolute;
+  border-radius: 25px;
+  background-color: var(--feed-background-color);
+  transition: all 300ms ease-in-out;
+}

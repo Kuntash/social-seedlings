@@ -3,4 +3,8 @@ export type FeedImageProps = {
   size: 'regular' | 'small';
   color: string;
   blurHash: string;
+  width?: number;
+  height?: number;
+  layout?: 'fixed' | 'fill' | 'intrinsic' | 'responsive';
+  alt?: string;
 };

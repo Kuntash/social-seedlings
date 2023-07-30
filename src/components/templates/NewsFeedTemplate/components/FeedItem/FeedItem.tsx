@@ -3,22 +3,13 @@ import styles from '@main/components/templates/NewsFeedTemplate/components/FeedI
 import { FeedItemProps } from './types';
 import { ProfilePicture } from '@main/components/atoms/ProfilePicture';
 import { FeedImage } from '@main/components/atoms/FeedImage';
-import { useInfiniteFeeds } from '@main/hooks/reactQuery/useInfiniteFeeds';
 import { useIntersectionObserver } from '@main/hooks/useIntersectionObserver';
 import Link from 'next/link';
 
 /* convert this component to forwardRef */
 
 export const FeedItem = (props: FeedItemProps) => {
-  const { feed } = props;
-  const { data: feeds, fetchNextPage } = useInfiniteFeeds();
-
-  const isLastFeed =
-    feed?.id ===
-    feeds?.pages[feeds?.pages.length - 1]?.[
-      feeds?.pages[feeds?.pages.length - 1]?.length - 1
-    ]?.id;
-
+  const { feed, isLastFeed, fetchNextPage } = props;
   const lastFeedRef = useRef<HTMLLIElement | null>(null);
 
   useIntersectionObserver({
@@ -41,7 +32,7 @@ export const FeedItem = (props: FeedItemProps) => {
 
         {/*  User name and location*/}
         <div className={styles.user__details__container}>
-          <Link href={`/${feed?.user?.username}`}>
+          <Link href={`/user/${feed?.user?.username}`}>
             <h5 className={styles.user__name}>{feed?.user?.username}</h5>
           </Link>
           <p className={styles.user__location}>{feed?.location?.name}</p>
@@ -51,13 +42,24 @@ export const FeedItem = (props: FeedItemProps) => {
         <div></div>
       </div>
 
-      {/* Feed itme photo */}
-      <FeedImage
-        size="regular"
-        urls={feed?.urls}
-        color={feed.color}
-        blurHash={feed?.blur_hash}
-      />
+      {/* Feed item photo */}
+
+      <div className={styles.feed__image__container}>
+        <FeedImage
+          size="regular"
+          urls={feed?.urls}
+          color={feed.color}
+          blurHash={feed?.blur_hash}
+          layout="fill"
+          alt={feed?.alt_description}
+        />
+
+        <div className={styles.feed__image__overlay}>
+          <p className={styles.feed__image__description}>
+            {feed?.alt_description}
+          </p>
+        </div>
+      </div>
 
       <div className={styles?.feed__item__footer}>
         {/* Likes */}

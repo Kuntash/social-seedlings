@@ -6,7 +6,6 @@ export const getFeeds = async () => {
       `https://api.unsplash.com/photos/random?client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}&count=${FEED_LIMIT_PER_PAGE}`
     );
 
-    console.log('🚀 ~ file: feed.ts:8 ~ getFeeds ~ response:', response);
     if (response?.ok) {
       return await response.json();
     }

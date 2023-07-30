@@ -6,8 +6,8 @@
 }
 
 .feed__image__container.small {
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
 }
 
 .feed__image__container.regular {
@@ -16,10 +16,6 @@
 }
 
 @media (max-width: 425px) {
-  .feed__image__container.small {
-    height: 400px;
-    width: 400px;
-  }
   .feed__image__container.regular {
     height: 400px;
   }

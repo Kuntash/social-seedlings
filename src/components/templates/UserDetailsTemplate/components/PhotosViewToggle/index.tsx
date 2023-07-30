@@ -1,0 +1,1 @@
+export { PhotosViewToggle } from './PhotosViewToggle';

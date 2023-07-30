@@ -5,14 +5,29 @@ import { FeedItem } from '../FeedItem';
 import { Loader } from '@main/components/atoms/Loader';
 
 export const Feeds = () => {
-  const { data: feeds, isFetchingNextPage } = useInfiniteFeeds();
+  const { data: feeds, isFetchingNextPage, fetchNextPage } = useInfiniteFeeds();
 
   return (
     <>
       <ul className={styles.feed__container}>
         {feeds?.pages.map((page) =>
           page?.map((feed: any) => {
-            return <FeedItem key={feed?.id} feed={feed} />;
+            const isLastFeed =
+              feed?.id ===
+              feeds?.pages[feeds?.pages.length - 1]?.[
+                feeds?.pages[feeds?.pages.length - 1]?.length - 1
+              ]?.id;
+
+            return (
+              <FeedItem
+                key={feed?.id}
+                feed={feed}
+                isLastFeed={isLastFeed}
+                fetchNextPage={() => {
+                  fetchNextPage();
+                }}
+              />
+            );
           })
         )}
       </ul>

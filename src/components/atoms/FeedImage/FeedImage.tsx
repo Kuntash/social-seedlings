@@ -4,7 +4,7 @@ import { FeedImageProps } from './types';
 import Image from 'next/legacy/image';
 
 export const FeedImage = (props: FeedImageProps) => {
-  const { urls, size, color } = props;
+  const { urls, size, color, layout, width, height, alt } = props;
 
   return (
     <div
@@ -14,8 +14,10 @@ export const FeedImage = (props: FeedImageProps) => {
     >
       <Image
         src={urls?.[size]}
-        alt="Feed image"
-        layout="fill"
+        alt={alt}
+        layout={layout}
+        {...(width && { width })}
+        {...(height && { height })}
         objectFit="cover"
       />
     </div>

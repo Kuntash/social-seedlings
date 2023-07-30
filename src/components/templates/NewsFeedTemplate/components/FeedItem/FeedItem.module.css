@@ -52,3 +52,38 @@
   font-size: 14px;
   color: var(--regular-font-color);
 }
+
+.feed__image__container {
+  position: relative;
+  transition: all 300ms ease-in-out;
+  width: 100%;
+}
+
+.feed__image__overlay {
+  border-radius: 10px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 150ms ease-in-out;
+  transform: scale(0);
+  transform-origin: center;
+  background-color: var(--feed-background-color);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.feed__image__container:hover .feed__image__overlay {
+  transform: scale(1);
+}
+
+.feed__image__description {
+  color: var(--regular-font-color);
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
